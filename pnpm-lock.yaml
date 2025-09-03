@@ -875,8 +875,8 @@ importers:
   packages/sql-sqlite-bun:
     devDependencies:
       '@effect-native/libcrsql':
-        specifier: ^0.16.301
-        version: 0.16.301(@effect/platform@packages+platform)(effect@packages+effect)
+        specifier: ^0.16.303
+        version: 0.16.303(@effect/platform@packages+platform)(effect@packages+effect)
       '@effect/experimental':
         specifier: workspace:^
         version: link:../experimental
@@ -920,8 +920,8 @@ importers:
         version: 11.10.0
     devDependencies:
       '@effect-native/libcrsql':
-        specifier: ^0.16.301
-        version: 0.16.301(@effect/platform@packages+platform)(effect@packages+effect)
+        specifier: ^0.16.303
+        version: 0.16.303(@effect/platform@packages+platform)(effect@packages+effect)
       '@effect/experimental':
         specifier: workspace:^
         version: link:../experimental
@@ -1606,8 +1606,8 @@ packages:
     resolution: {integrity: sha512-NKBGBSIKUG584qrS1tyxVpX/AKJKQw5HgjYEnPLC0QsTw79JrGn+qUr8CXFb955Iy7GUdiiUv1rJ6JBGvaKb6w==}
     engines: {node: '>=18'}
 
-  '@effect-native/libcrsql@0.16.301':
-    resolution: {integrity: sha512-mfFjunNVcmy3uXavy7fz9aDaLK5I/skdNVvtDJ/kXHU1dYrrvhnxuZo6reeULiCNqfb6GPlmCaIL1xO6qG+9Qw==}
+  '@effect-native/libcrsql@0.16.303':
+    resolution: {integrity: sha512-mmjYKz2xVPhK7RMPjHrSlYK2XnK+ieyp+7XJgW/Nm2BMLtzkIU682ZqQeEPiG3pbgN8/9b7YbAznqBVJbIFsSA==}
     peerDependencies:
       '@effect/platform': '*'
       effect: '*'
@@ -7606,7 +7606,7 @@ snapshots:
     dependencies:
       '@edge-runtime/primitives': 6.0.0
 
-  '@effect-native/libcrsql@0.16.301(@effect/platform@packages+platform)(effect@packages+effect)':
+  '@effect-native/libcrsql@0.16.303(@effect/platform@packages+platform)(effect@packages+effect)':
     optionalDependencies:
       '@effect/platform': link:packages/platform
       effect: link:packages/effect
