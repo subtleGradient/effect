@@ -123,6 +123,7 @@ describe("Client", () => {
           const extPath = yield* Effect.try(() => LibCrSql.getCrSqliteExtensionPathSync())
           yield* sql.loadExtension(extPath)
 
+          // NOTE: This is the exact same query as before, but now it should succeed
           const extInfoAfterLoad = yield* sql<{ sha: string }>`SELECT crsql_sha() as sha`
           assert.strictEqual(extInfoAfterLoad.length, 1)
           assert.deepStrictEqual(extInfoAfterLoad, [{ sha: "0d62b52b4662ee1a762c9fd9264d48a91ab8df83" }])
