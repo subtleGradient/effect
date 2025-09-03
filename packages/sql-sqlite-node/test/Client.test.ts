@@ -1,3 +1,4 @@
+import * as LibCrSql from "@effect-native/libcrsql"
 import { Reactivity } from "@effect/experimental"
 import { FileSystem } from "@effect/platform"
 import { NodeFileSystem } from "@effect/platform-node"
@@ -72,5 +73,24 @@ describe("Client", () => {
       )
       const rows = yield* sql`SELECT * FROM test`
       assert.deepStrictEqual(rows, [])
+    }))
+
+  it.scoped("loadExtension (crsqlite)", () =>
+    Effect.gen(function*() {
+      const sql = yield* makeClient
+      // Ensure a crsqlite function errors before extension is loaded
+      const beforeErr = yield* sql`SELECT crsql_sha()`.pipe(Effect.flip)
+      assert.equal(beforeErr._tag, "SqlError")
+
+      const extPath = yield* Effect.try(() => LibCrSql.getCrSqliteExtensionPathSync())
+      yield* sql.loadExtension(extPath)
+
+      // Use a different query after loading to avoid prepared statement cache issues
+      const rows = yield* sql<
+        { sha: string; site_id: string }
+      >`SELECT crsql_sha() as sha, hex(crsql_site_id()) AS site_id`
+      assert.strictEqual(rows.length, 1)
+      assert.strictEqual(typeof rows[0].site_id, "string")
+      assert(rows[0].site_id.length > 0)
     }))
 })
